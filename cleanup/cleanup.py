@@ -12,6 +12,7 @@ df.drop(df.columns[4:12], axis=1, inplace=True)
 for index, tools in df['Experiences with tools'].iteritems():
     tools = tools.split(',')
     for tool in tools:
+        tool = tool.strip()
         if tool not in list(df):
             df[tool] = [False] * df.shape[0]
         df.set_value(index, tool, True)
